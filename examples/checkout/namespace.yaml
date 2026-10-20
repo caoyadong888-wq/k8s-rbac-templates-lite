@@ -1,0 +1,7 @@
+# Namespace checkout. Sample name. Check upstream docs before you apply.
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: checkout
+  labels:
+    app.kubernetes.io/name: checkout

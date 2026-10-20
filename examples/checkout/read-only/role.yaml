@@ -1,0 +1,53 @@
+# Filled example. Namespace checkout, Role checkout-read.
+# Names are concrete. This is not a placeholder token.
+# Check upstream docs before you apply it to a cluster.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: checkout-read
+  namespace: checkout
+  labels:
+    app.kubernetes.io/name: checkout-read
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  - pods/log
+  - services
+  - configmaps
+  - events
+  - persistentvolumeclaims
+  - serviceaccounts
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apps
+  resources:
+  - deployments
+  - replicasets
+  - statefulsets
+  - daemonsets
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - batch
+  resources:
+  - jobs
+  - cronjobs
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - networking.k8s.io
+  resources:
+  - ingresses
+  verbs:
+  - get
+  - list
+  - watch

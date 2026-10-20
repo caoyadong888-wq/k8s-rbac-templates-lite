@@ -1,0 +1,7 @@
+# Namespace shop. Sample name. Check upstream docs before you apply.
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: shop
+  labels:
+    app.kubernetes.io/name: shop

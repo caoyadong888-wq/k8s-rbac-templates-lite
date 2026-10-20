@@ -1,0 +1,17 @@
+# RoleBinding namespace-read grants Role namespace-read to ServiceAccount shop/namespace-read.
+# Check upstream docs before you change roleRef. roleRef is immutable after create.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: namespace-read
+  namespace: shop
+  labels:
+    app.kubernetes.io/name: namespace-read
+subjects:
+- kind: ServiceAccount
+  name: namespace-read
+  namespace: shop
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: namespace-read

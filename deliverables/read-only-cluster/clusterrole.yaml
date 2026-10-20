@@ -1,0 +1,52 @@
+# ClusterRole cluster-read. Same read verbs as the namespace Role. No secrets.
+# Applying the matching ClusterRoleBinding grants every namespace.
+# Check upstream docs before you apply that binding.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: cluster-read
+  labels:
+    app.kubernetes.io/name: cluster-read
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  - pods/log
+  - services
+  - configmaps
+  - events
+  - persistentvolumeclaims
+  - serviceaccounts
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apps
+  resources:
+  - deployments
+  - replicasets
+  - statefulsets
+  - daemonsets
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - batch
+  resources:
+  - jobs
+  - cronjobs
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - networking.k8s.io
+  resources:
+  - ingresses
+  verbs:
+  - get
+  - list
+  - watch
